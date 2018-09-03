@@ -27,6 +27,7 @@ precintcon.spi.analysis <- function(
 			p <- c(p, sum(d[j:(period+j-1),3], na.rm=T))
 			if (any(is.na(d[j:(period+j-1),3]))) { p[length(p)] <- NA }
 		
+		browser()
 		gamma_ <- precintcon.gamma(p, period)
 		
 		result <- data.frame()

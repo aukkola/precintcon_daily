@@ -48,6 +48,10 @@ precintcon.spi.analysis <- function(
 		
 		result <- precintcon.Z(result)
 		
+		if(any(result == -9.999000e+03)) {
+		  result[which(result == -9.999000e+03)] <- NA
+		}
+		
 		d <- cbind(d[(if (period > 1) -(1:(period-1)) else 1:length(result)),1:2], result)
 		
 		colnames(d) <- c("year", "month", "spi")

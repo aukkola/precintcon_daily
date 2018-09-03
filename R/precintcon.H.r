@@ -15,8 +15,14 @@
 #' @seealso \code{\link{precintcon.ci.analysis}} 
 #' @keywords precipitation concentration index 
 precintcon.H <- function(beta, gamm, pzero, x) {
-	if (x > 0)
-		return(pzero + (1 - pzero) * pgamma(x/beta, gamm))
-	else
-		return(pzero)
+  
+  if(!is.na(x)) {
+    if (x > 0)
+      return(pzero + (1 - pzero) * pgamma(x/beta, gamm))
+    else
+      return(pzero)
+  } else {
+    return(pzero)
+  }
+
 }

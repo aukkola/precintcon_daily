@@ -27,26 +27,34 @@ precintcon.Z <- function(H) {
 		minus = 0.0
 		SPI = 0.0
 		
-		if (prob > 0.5) {
-			minus = 1.0;
-			prob = 1.0 - prob;
+		if(!is.na(prob)){
+		  
+		  if (prob > 0.5) {
+		    minus = 1.0;
+		    prob = 1.0 - prob;
+		  } else {
+		    minus = -1.0;
+		  }
+		  
+		  if (prob < 0.0)
+		    return (0.0);
+		  
+		  if (prob == 0.0)
+		    SPI <- (9999.0 * minus)
+		  else {
+		    t = sqrt(log(1.0 / (prob * prob)));
+		    
+		    SPI <- (minus
+		            * (t
+		               - ((((c2 * t) + c1) * t) + c0)
+		               / ((((((d3 * t) + d2) * t) + d1) * t) + 1.0)))
+		  }	
+		  
+		  
 		} else {
-			minus = -1.0;
+		  SPI <- NA
 		}
-		
-		if (prob < 0.0)
-			return (0.0);
 
-		if (prob == 0.0)
-			SPI <- (9999.0 * minus)
-		else {
-			t = sqrt(log(1.0 / (prob * prob)));
-		
-			SPI <- (minus
-						* (t
-							- ((((c2 * t) + c1) * t) + c0)
-							/ ((((((d3 * t) + d2) * t) + d1) * t) + 1.0)))
-		}	
 		result <- c(result, SPI)
 	}
 	

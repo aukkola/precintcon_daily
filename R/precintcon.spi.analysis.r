@@ -48,8 +48,15 @@ precintcon.spi.analysis <- function(
 		
 		result <- precintcon.Z(result)
 		
-		if(any(result == -9.999000e+03)) {
-		  result[which(result == -9.999000e+03)] <- NA
+		#This also fails if NA present, rewrite
+		# if(any(result == -9.999000e+03)) {
+		#   result[which(result == -9.999000e+03)] <- NA
+		# }
+		
+		rm_ind <- which(result == -9.999000e+03)
+		
+		if(length(rm_ind) > 0) {
+		  result[rm_ind] <- NA
 		}
 		
 		d <- cbind(d[(if (period > 1) -(1:(period-1)) else 1:length(result)),1:2], result)

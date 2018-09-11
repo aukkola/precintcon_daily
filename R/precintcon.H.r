@@ -22,7 +22,7 @@ precintcon.H <- function(beta, gamm, pzero, x) {
     else
       return(pzero)
   } else {
-    return(pzero)
+    return(NA)
   }
 
 }

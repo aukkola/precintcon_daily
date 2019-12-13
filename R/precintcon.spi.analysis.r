@@ -18,6 +18,7 @@ precintcon.spi.analysis <- function(
 	} else if (is.element("precintcon.daily", class(d)) ||
 			 is.element("precintcon.monthly", class(d))) {
 		
+	  browser()
 		#if (is.element("precintcon.daily", class(d)))
 	#		d <- precintcon.monthly.aggregation(d)
 		

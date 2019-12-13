@@ -5,8 +5,8 @@ precintcon.spi.analysis <- function(
    distribution = "Gamma"
 ) {
 	
-	d <- object
-	
+  d <- object
+  
 	if (distribution != "Gamma") {
 	
 		stop("there is no implementation for another distributions")
@@ -18,7 +18,6 @@ precintcon.spi.analysis <- function(
 	} else if (is.element("precintcon.daily", class(d)) ||
 			 is.element("precintcon.monthly", class(d))) {
 		
-	  browser()
 		#if (is.element("precintcon.daily", class(d)))
 	#		d <- precintcon.monthly.aggregation(d)
 		

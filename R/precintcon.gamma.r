@@ -21,11 +21,11 @@ precintcon.gamma <- function(p, period) {
 	
 	gamma_ <- data.frame()
 
-	for (j in 1:12) {
+	for (j in 1:365) {
 
-		im = (period + j - 1) %% 12 + 1
+		im = (period + j - 1) %% 365 + 1
 		
-		q <- p[seq(j, length(p) + period, by=12)]
+		q <- p[seq(j, length(p) + period, by=365)]
 		q <- q[!is.na(q)]
 
 		pzero <- sum(q==0) / length(q)

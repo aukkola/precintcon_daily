@@ -18,8 +18,8 @@ precintcon.spi.analysis <- function(
 	} else if (is.element("precintcon.daily", class(d)) ||
 			 is.element("precintcon.monthly", class(d))) {
 		
-		if (is.element("precintcon.daily", class(d)))
-			d <- precintcon.monthly.aggregation(d)
+		#if (is.element("precintcon.daily", class(d)))
+	#		d <- precintcon.monthly.aggregation(d)
 		
 		p <- c()
 		
@@ -35,7 +35,7 @@ precintcon.spi.analysis <- function(
 		
 		for (k in 1:length(p)) {
 			
-			m <- ((k + period - 1) %% 12) +1
+			m <- ((k + period - 1) %% 365) +1
 			
 			result <- 
 				c(result, 
@@ -61,7 +61,7 @@ precintcon.spi.analysis <- function(
 		
 		d <- cbind(d[(if (period > 1) -(1:(period-1)) else 1:length(result)),1:2], result)
 		
-		colnames(d) <- c("year", "month", "spi")
+		colnames(d) <- c("year", "days", "spi")
 		
 		class(d) <- c("data.frame", "precintcon.spi")
 		

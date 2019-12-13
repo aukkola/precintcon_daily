@@ -1,4 +1,4 @@
-Package: precintcon_daily
+Package: precintconDaily
 Type: Package
 Title: Precipitation Intensity, Concentration and Anomaly Analysis
 Version: 2.3.0
